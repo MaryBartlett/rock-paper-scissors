@@ -1,0 +1,35 @@
+{
+  "name": "rock-paper-scissors",
+  "version": "1.0.0",
+  "description": "Angular learning exercise of rock paper scissors",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "jasmine-node specno"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MaryBartlett/rock-paper-scissors.git"
+  },
+  "author": "Mary Bartlett",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MaryBartlett/rock-paper-scissors/issues"
+  },
+  "homepage": "https://github.com/MaryBartlett/rock-paper-scissors",
+  "devDependencies": {
+    "grunt": "0.4.2",
+    "grunt-contrib-concat":     "0.3.0",
+    "grunt-contrib-copy":       "0.5.0",
+    "grunt-contrib-jshint":     "0.8.0",
+    "grunt-contrib-uglify":     "0.2.2",
+    "grunt-contrib-watch":      "0.5.3",
+    "grunt-karma":              "0.8.3",
+    "karma":                    "0.12.16",
+    "karma-jasmine":            "0.1.5",
+    "karma-phantomjs-launcher": "0.1.4"
+  },  
+  "scripts": {
+    "prestart": "npm install",
+    "postinstall": "bower install"
+  }
+}
