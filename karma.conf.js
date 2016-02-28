@@ -1,48 +1,62 @@
-module.exports = function(config) {
+// Reference: http://karma-runner.github.io/0.12/config/configuration-file.html
+module.exports = function karmaConfig (config) {
   config.set({
+    frameworks: [
+      // Reference: https://github.com/karma-runner/karma-jasmine
+      // Set framework to jasmine
+      'jasmine'
+    ],
+    plugins: [
+      require('phantomjs-polyfill'),
+      require("karma-webpack"),
+      require("karma-coverage"),
+      require("karma-spec-reporter"),
+      require("karma-sourcemap-loader"),
+      require("karma-phantomjs-launcher"),
+      require("karma-jasmine")
+    ],
+    reporters: [
+      // Reference: https://github.com/mlex/karma-spec-reporter
+      // Set reporter to print detailed results to console
+      'spec',
 
-    // base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: '',
-
-    // frameworks to use
-    // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['jasmine'],
-
-    // list of files to exclude
-    exclude: [
-      
+      // Reference: https://github.com/karma-runner/karma-coverage
+      // Output code coverage files
+      'coverage'
     ],
 
-    // preprocess matching files before serving them to the browser
-    // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
+    files: [
+      // Grab all files in the app folder that contain .spec.
+      //
+      './node_modules/phantomjs-polyfill/bind-polyfill.js',
+      './config/webpack.tests.js'
+    ],
+
     preprocessors: {
-    
+      // Reference: http://webpack.github.io/docs/testing.html
+      // Reference: https://github.com/webpack/karma-webpack
+      // Convert files with webpack and load sourcemaps
+        './config/webpack.tests.js': ['webpack', 'sourcemap']
     },
 
-    // test results reporter to use
-    // possible values: 'dots', 'progress'
-    // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+    browsers: [
+      // Run tests using PhantomJS
+      'PhantomJS'
+    ],
 
-    // web server port
-    port: 9876,
+    singleRun: true,
 
-    // enable / disable colors in the output (reporters and logs)
-    colors: true,
+    // Configure code coverage reporter
+    coverageReporter: {
+      dir: 'build/coverage/',
+      type: 'html'
+    },
 
-    // level of logging
-    // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-    logLevel: config.LOG_INFO,
+    webpack: require('./webpack.config'),
 
-    // enable / disable watching file and executing tests whenever any file changes
-    autoWatch: false,
-
-    // start these browsers
-    // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['PhantomJS'],
-
-    // Continuous Integration mode
-    // if true, Karma captures browsers, runs the tests and exits
-    singleRun: true
+    // Hide webpack build information from output
+    webpackMiddleware: {
+      noInfo: true
+    }
   });
 };

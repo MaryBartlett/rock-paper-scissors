@@ -2,34 +2,66 @@
   "name": "rock-paper-scissors",
   "version": "1.0.0",
   "description": "Angular learning exercise of rock paper scissors",
-  "main": "src/index.js",
-  "scripts": {
-    "test": "jasmine-node specno"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/MaryBartlett/rock-paper-scissors.git"
-  },
   "author": "Mary Bartlett",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/MaryBartlett/rock-paper-scissors/issues"
-  },
-  "homepage": "https://github.com/MaryBartlett/rock-paper-scissors",
-  "devDependencies": {
-    "grunt": "0.4.2",
-    "grunt-contrib-concat":     "0.3.0",
-    "grunt-contrib-copy":       "0.5.0",
-    "grunt-contrib-jshint":     "0.8.0",
-    "grunt-contrib-uglify":     "0.2.2",
-    "grunt-contrib-watch":      "0.5.3",
-    "grunt-karma":              "0.8.3",
-    "karma":                    "0.12.16",
-    "karma-jasmine":            "0.1.5",
-    "karma-phantomjs-launcher": "0.1.4"
-  },  
   "scripts": {
-    "prestart": "npm install",
-    "postinstall": "bower install"
+    "build": "npm run build:dist && npm run build:module",
+    "build:dev": "webpack --bail -p --type build --env dev",
+    "build:dist": "webpack --bail -p --type build  --env prod --progress",
+    "build:module": "webpack --bail --type build-module --env prod --progress",
+    "serve": "webpack-dev-server --inline --type serve",
+    "serve:dev": "webpack-dev-server --env dev --type serve --inline",
+    "serve:prod": "webpack-dev-server --env prod --type serve --inline",
+    "test": "karma start --type test",
+    "test:live": "karma start --type test --auto-watch --no-single-run",
+    "prepublish": "npm run build"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "angular": "^1.4.8",
+    "angular-ui-router": "^0.2.15"
+  },
+  "devDependencies": {
+    "angular-mocks": "^1.4.8",
+    "autoprefixer": "^6.0.3",
+    "babel-core": "^6.3.15",
+    "babel-eslint": "^5.0.0-beta4",
+    "babel-loader": "^6.2.0",
+    "babel-plugin-syntax-flow": "^6.3.13",
+    "babel-plugin-transform-flow-strip-types": "^6.3.15",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-stage-0": "^6.3.13",
+    "babel-runtime": "^6.3.13",
+    "browser-sync": "^2.10.0",
+    "browser-sync-webpack-plugin": "^1.0.1",
+    "commander": "^2.9.0",
+    "css-loader": "^0.21.0",
+    "eslint": "^1.10.3",
+    "eslint-loader": "^1.1.1",
+    "extract-text-webpack-plugin": "^0.8.2",
+    "file-loader": "^0.8.5",
+    "html-webpack-plugin": "^1.6.2",
+    "isparta-instrumenter-loader": "^1.0.0",
+    "jasmine-core": "^2.3.4",
+    "karma": "^0.13.14",
+    "karma-coverage": "^0.5.3",
+    "karma-jasmine": "^0.3.6",
+    "karma-phantomjs-launcher": "^0.2.1",
+    "karma-sourcemap-loader": "^0.3.6",
+    "karma-spec-reporter": "0.0.21",
+    "karma-webpack": "^1.7.0",
+    "lodash": "^3.10.1",
+    "matchdep": "^1.0.0",
+    "ng-annotate-webpack-plugin": "^0.1.2",
+    "node-libs-browser": "^0.5.3",
+    "node-sass": "^3.4.2",
+    "null-loader": "^0.1.1",
+    "phantomjs": "^1.9.18",
+    "phantomjs-polyfill": "0.0.1",
+    "postcss-loader": "^0.7.0",
+    "raw-loader": "^0.5.1",
+    "sass-loader": "^3.1.2",
+    "style-loader": "^0.13.0",
+    "webpack": "^1.12.9",
+    "webpack-dev-server": "^1.14.0"
   }
 }

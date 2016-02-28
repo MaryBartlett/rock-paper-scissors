@@ -1,11 +1,19 @@
 {
-    "name": "rock-paper-scissors",
-    "version": "1.0.0",
-    "dependencies": {
-        "angular":          "1.2.16",
-        "angular-route":    "1.2.16",
-        "angular-sanitize": "1.2.16",
-        "angular-mocks":    "1.2.16"
-    },
-    "analytics": false
+  "name": "rock-paper-scissors",
+  "description": "Angular learning exercise of rock paper scissors",
+  "main": "./client/app/app.js",
+  "authors": [
+    "Mary Bartlett"
+  ],
+  "license": "MIT",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {}
 }
