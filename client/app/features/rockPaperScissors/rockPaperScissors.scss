@@ -1,8 +1,61 @@
+$color-border: #aa3dd1;
+$color-scissors: #CF9036; // Fiskars brand colour
+$color-rock: #aaa;
+$color-paper: #eeece3; // sepia
+
 .page {
     display: flex;
+    flex-direction: column;
 }
 
 .page-header {
     font-size: 5rem;
-    margin: auto;
+    margin: 1rem auto 3rem auto;
+}
+
+
+.selector-container {
+    display: flex;
+    justify-content: center;
+}
+
+.selector {
+    height: 30rem;
+    width: 30rem;
+    background-color: transparent;
+    border: none;
+
+    &:hover,
+    &:active,
+    &:focus {
+        border: 0.5rem solid $color-border;
+    }
+}
+
+.selector-rock,
+.selector-paper,
+.selector-scissors {
+    & svg {
+        height: 25rem;
+        width: 25rem;
+    }
+}
+
+
+.selector-rock {
+    & svg {
+        fill: $color-rock;
+    }
+}
+
+.selector-paper {
+    & svg {
+        fill: $color-paper;
+    }
+}
+
+.selector-scissors {
+    & svg {
+        fill: $color-scissors;
+    }
 }

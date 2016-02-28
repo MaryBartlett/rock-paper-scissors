@@ -5,6 +5,7 @@ Built using [generator-angular-webpack-babel](https://github.com/Aleksion/genera
 
 ### Scripts
 
+
 All scripts are run with `npm run [script]`, for example: `npm run test`.
 
 * `build` - will run both build:module and build:dist
@@ -17,3 +18,23 @@ All scripts are run with `npm run [script]`, for example: `npm run test`.
 * `test:live` - continuously run unit tests watching for changes
 
 See what each script does by looking at the `scripts` section in [package.json](./package.json).
+
+
+#### Images
+
+
+Images for rock paper scissors were used from [Curiosa Mathematica](http://curiosamathematica.tumblr.com/image/78536951883) with no prior permission. 
+
+
+### Comments about the the webpack generator
+
+
+Images don't seem to load - they don't webpack up and I spent some time trying to find out why, but that wasn't the point of this exercise so I've inlined SVGs as a workaround. The suggestion in the webpack conf is that they will get copied to dist but they don't.
+
+Flow seems a bit like overkill, I've not run into any problems due to it but it (and many other things in this project) are probably unnecessary for a small learning project.
+
+
+### I never said I was a designer
+
+
+This definitely needs someone with an eye for design making it!
