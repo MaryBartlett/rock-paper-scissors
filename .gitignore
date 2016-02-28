@@ -4,3 +4,5 @@ dist
 .grunt
 .idea
 npm-debug.log
+build
+lib
