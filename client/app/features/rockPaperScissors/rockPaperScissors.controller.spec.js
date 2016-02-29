@@ -1,63 +1,111 @@
 import rockPaperScissors from './index';
 
 describe('Controller: rockPaperScissors', function() {
-  let $controller, ctrl;
+    let $controller;
+    let ctrl;
+
+    const rockClick = {
+        target: {
+            id: 'rock'
+        }
+    };
+
+    const paperClick = {
+        target: {
+            id: 'paper'
+        }
+    };
+
+    const scissorsClick = {
+        target: {
+            id: 'scissors'
+        }
+    };
 
     beforeEach(angular.mock.module(rockPaperScissors));
 
     beforeEach(angular.mock.inject(function(_$controller_) {
         $controller = _$controller_;
         ctrl = $controller('rockPaperScissorsController');
+
     }));
 
 
-    describe('determineWinner', function () {
 
-        it('returns \'draw\' if both values are the same', function() {
-            expect(ctrl.winner('rock', 'rock')).toEqual('draw');
-            expect(ctrl.winner('paper', 'paper')).toEqual('draw');
-            expect(ctrl.winner('scissors', 'scissors')).toEqual('draw');
+
+    describe('.playGame', function () {
+
+        describe('returns \'draw\' if both values are', function () {
+
+            it('rock', function() {
+                spyOn(Math, 'random').and.returnValue(0.0); // rock
+
+                expect(ctrl.playGame(rockClick)).toEqual('draw');
+            });
+
+            it('paper', function() {
+                spyOn(Math, 'random').and.returnValue(0.3); // paper
+
+                expect(ctrl.playGame(paperClick)).toEqual('draw');
+            });
+
+            it('scissors', function() {
+                spyOn(Math, 'random').and.returnValue(0.8); // scissors
+
+                expect(ctrl.playGame(scissorsClick)).toEqual('draw');
+            });
+
+            it('scissors', function() {
+                spyOn(Math, 'random').and.returnValue(1); // scissors
+
+                expect(ctrl.playGame(scissorsClick)).toEqual('draw');
+            });
         });
 
-        it('rock beats scissors', function () {
-            expect(ctrl.winner('rock', 'scissors')).toEqual('rock');
-            expect(ctrl.winner('scissors', 'rock')).toEqual('rock');
-        });
+        describe('rock beats scissors', function () {
 
-        it('paper beats rock', function () {
-            expect(ctrl.winner('rock', 'paper')).toEqual('paper');
-            expect(ctrl.winner('paper', 'rock')).toEqual('paper');
-        });
+            it('when rock selected by user', function () {
+                spyOn(Math, 'random').and.returnValue(0.8); // scissors
 
-        it('scissors beats paper', function () {
-            expect(ctrl.winner('paper', 'scissors')).toEqual('scissors');
-            expect(ctrl.winner('scissors', 'paper')).toEqual('scissors');
-        });
-  });
+                expect(ctrl.playGame(rockClick)).toEqual('rock');
+            });
 
+            it('when scissors selected by user', function () {
+                spyOn(Math, 'random').and.returnValue(0.0); // rock
 
-    describe('randomValue', function () {
-
-        it('returns rock when Math.random and Math.round results in 0', function () {
-            spyOn(Math, 'random').and.returnValue(0.0);
-            expect(ctrl.randomValue()).toEqual('rock');
-        });
-
-        it('returns paper when Math.random and Math.round results in 1', function () {
-            spyOn(Math, 'random').and.returnValue(0.3);
-            expect(ctrl.randomValue()).toEqual('paper');
+                expect(ctrl.playGame(scissorsClick)).toEqual('rock');
+            });
         });
 
 
-        it('returns paper when Math.random and Math.round results in 2', function () {
-            spyOn(Math, 'random').and.returnValue(0.8);
-            expect(ctrl.randomValue()).toEqual('scissors');
+        describe('paper beats rock', function () {
+
+            it('when paper selected by user', function () {
+                spyOn(Math, 'random').and.returnValue(0.1); // rock
+
+                expect(ctrl.playGame(paperClick)).toEqual('paper');
+            });
+
+            it('when rock selected by user', function () {
+                spyOn(Math, 'random').and.returnValue(0.4); // paper
+
+                expect(ctrl.playGame(rockClick)).toEqual('paper');
+            });
         });
 
-        it('returns scissors when Math.random and Math.round results in 2', function () {
-            spyOn(Math, 'random').and.returnValue(1);
-            expect(ctrl.randomValue()).toEqual('scissors');
-        });
+        describe('scissors beats paper', function () {
 
+            it('when scissors selected by user', function () {
+                spyOn(Math, 'random').and.returnValue(0.5); // paper
+
+                expect(ctrl.playGame(scissorsClick)).toEqual('scissors');
+            });
+
+            it('when paper selected by user', function () {
+                spyOn(Math, 'random').and.returnValue(0.9); // scissors
+
+                expect(ctrl.playGame(paperClick)).toEqual('scissors');
+            });
+        });
     });
 });

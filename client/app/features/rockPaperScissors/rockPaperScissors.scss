@@ -30,14 +30,10 @@ $color-paper: #eeece3; // sepia
     &:focus {
         border: 0.5rem solid $color-border;
     }
-}
-
-.selector-rock,
-.selector-paper,
-.selector-scissors {
     & svg {
         height: 25rem;
         width: 25rem;
+        pointer-events: none;
     }
 }
 

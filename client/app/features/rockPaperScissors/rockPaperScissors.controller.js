@@ -28,20 +28,24 @@ const determineWinner = function determineWinner (player1, player2) {
 
 }
 
+
 const randomValue = function returnRandomValue () {
     const randomPos = Math.round(Math.random() * (l - 1)); // subtract 1 due to arrays being zero indexed
     return rockPaperScissors[randomPos];
 }
-
 
 export default class rockPaperScissorsController {
   static get UID(){
     return "rockPaperScissorsController"
   }
   
+  playGame (e) {
+    let selectedItem = e.target.id;
+    window.console.log('the winner is::: ', determineWinner(randomValue(), selectedItem));
+    return determineWinner(randomValue(), selectedItem);
+  };
+
   /* @ngInject */
   constructor() {
-    this.winner = determineWinner,
-    this.randomValue = randomValue;
   }
 }
