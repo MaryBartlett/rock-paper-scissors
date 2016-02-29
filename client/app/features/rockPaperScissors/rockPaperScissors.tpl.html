@@ -17,6 +17,9 @@
         </button>
     </div>
 
+    <p ng-show="rockPaperScissors.playerChoice" class="choices">You chose: {{rockPaperScissors.playerChoice}}</p>
+    <p ng-show="rockPaperScissors.computerChoice" class="choices">Computer chose: {{rockPaperScissors.computerChoice}}</p>
+
     <!-- should this logic be somewhere else? -->
     <p ng-show="rockPaperScissors.winner === 'player'" class="winner">You win!</p>
     <p ng-show="rockPaperScissors.winner === 'computer'" class="winner">Computer wins! </p>

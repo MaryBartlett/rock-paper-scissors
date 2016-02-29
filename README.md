@@ -34,7 +34,11 @@ Images don't seem to load - they don't webpack up and I spent some time trying t
 Flow seems a bit like overkill, I've not run into any problems due to it but it (and many other things in this project) are probably unnecessary for a small learning project.
 
 
-### I never said I was a designer
+### What I've not done
 
 
-This definitely needs someone with an eye for design making it!
+This definitely needs someone with an eye for design making it, it's far from pretty!
+
+I've not tested this cross browser - just Chrome on Linux.
+
+Ideally you'd have a reset file to reset all the browsers back to a common point. I've not got this so expect some variation between browsers.

@@ -45,14 +45,16 @@ export default class rockPaperScissorsController {
     }
   
     playGame (e) {
-        let selectedItem = e.target.id;
-        let computerSelect = randomValue();
+        this.playerChoice = e.target.id;
+        this.computerChoice = randomValue();
 
-        this.winner = didPlayerWin(selectedItem, computerSelect);
+        this.winner = didPlayerWin(this.playerChoice, this.computerChoice);
     };
 
     /* @ngInject */
     constructor() {
-        this.winner
+        this.winner,
+        this.computerChoice,
+        this.playerChoice
     }
 }
