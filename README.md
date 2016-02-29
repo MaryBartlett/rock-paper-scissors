@@ -1,6 +1,6 @@
 # rock-paper-scissors
 
-Built using [generator-angular-webpack-babel](https://github.com/Aleksion/generator-angular-webpack-babel)
+Built using [generator-angular-webpack-babel](https://github.com/Aleksion/generator-angular-webpack-babel) and [this article explaining how best to use this angular ES6 webpack template](http://angular-tips.com/blog/2015/06/using-angular-1-dot-x-with-es6-and-webpack/)
 
 
 ### Scripts

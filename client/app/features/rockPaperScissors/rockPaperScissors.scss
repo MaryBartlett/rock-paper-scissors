@@ -9,7 +9,10 @@ $color-paper: #eeece3; // sepia
 }
 
 .page-header {
-    font-size: 5rem;
+    font-size: 2rem;
+    @media screen and (min-width: 480px) {
+        font-size: 5rem;
+    }
     margin: 1rem auto 3rem auto;
 }
 
@@ -19,9 +22,21 @@ $color-paper: #eeece3; // sepia
     justify-content: center;
 }
 
+
 .selector {
-    height: 30rem;
-    width: 30rem;
+    height: 10rem;
+    width: 10rem;
+
+    @media screen and (min-width: 500px) {
+        height: 20rem;
+        width: 20rem;
+    }
+
+    @media screen and (min-width: 1080px) {
+        height: 30rem;
+        width: 30rem;
+    }
+
     background-color: transparent;
     border: none;
 
@@ -31,9 +46,19 @@ $color-paper: #eeece3; // sepia
         border: 0.5rem solid $color-border;
     }
     & svg {
-        height: 25rem;
-        width: 25rem;
         pointer-events: none;
+        height: 8rem;
+        width: 8rem;
+
+        @media screen and (min-width: 500px) {
+            height: 15rem;
+            width: 15rem;
+        }
+
+        @media screen and (min-width: 1080px) {
+            height: 25rem;
+            width: 25rem;
+        }
     }
 }
 
@@ -53,5 +78,13 @@ $color-paper: #eeece3; // sepia
 .selector-scissors {
     & svg {
         fill: $color-scissors;
+    }
+}
+
+.winner {
+    font-size: 1.5rem;
+    margin: 1rem auto;
+    @media screen and (min-width: 480px) {
+        font-size: 4rem;
     }
 }

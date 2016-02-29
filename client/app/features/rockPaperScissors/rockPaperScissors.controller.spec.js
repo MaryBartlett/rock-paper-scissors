@@ -39,26 +39,30 @@ describe('Controller: rockPaperScissors', function() {
 
             it('rock', function() {
                 spyOn(Math, 'random').and.returnValue(0.0); // rock
+                ctrl.playGame(rockClick);
 
-                expect(ctrl.playGame(rockClick)).toEqual('draw');
+                expect(ctrl.winner).toEqual('draw');
             });
 
             it('paper', function() {
                 spyOn(Math, 'random').and.returnValue(0.3); // paper
+                ctrl.playGame(paperClick);
 
-                expect(ctrl.playGame(paperClick)).toEqual('draw');
+                expect(ctrl.winner).toEqual('draw');
             });
 
             it('scissors', function() {
                 spyOn(Math, 'random').and.returnValue(0.8); // scissors
+                ctrl.playGame(scissorsClick);
 
-                expect(ctrl.playGame(scissorsClick)).toEqual('draw');
+                expect(ctrl.winner).toEqual('draw');
             });
 
             it('scissors', function() {
                 spyOn(Math, 'random').and.returnValue(1); // scissors
+                ctrl.playGame(scissorsClick);
 
-                expect(ctrl.playGame(scissorsClick)).toEqual('draw');
+                expect(ctrl.winner).toEqual('draw');
             });
         });
 
@@ -66,14 +70,16 @@ describe('Controller: rockPaperScissors', function() {
 
             it('when rock selected by user', function () {
                 spyOn(Math, 'random').and.returnValue(0.8); // scissors
+                ctrl.playGame(rockClick);
 
-                expect(ctrl.playGame(rockClick)).toEqual('rock');
+                expect(ctrl.winner).toEqual('player');
             });
 
             it('when scissors selected by user', function () {
                 spyOn(Math, 'random').and.returnValue(0.0); // rock
+                ctrl.playGame(scissorsClick);
 
-                expect(ctrl.playGame(scissorsClick)).toEqual('rock');
+                expect(ctrl.winner).toEqual('computer');
             });
         });
 
@@ -82,14 +88,16 @@ describe('Controller: rockPaperScissors', function() {
 
             it('when paper selected by user', function () {
                 spyOn(Math, 'random').and.returnValue(0.1); // rock
+                ctrl.playGame(paperClick);
 
-                expect(ctrl.playGame(paperClick)).toEqual('paper');
+                expect(ctrl.winner).toEqual('player');
             });
 
             it('when rock selected by user', function () {
                 spyOn(Math, 'random').and.returnValue(0.4); // paper
+                ctrl.playGame(rockClick)
 
-                expect(ctrl.playGame(rockClick)).toEqual('paper');
+                expect(ctrl.winner).toEqual('computer');
             });
         });
 
@@ -97,14 +105,16 @@ describe('Controller: rockPaperScissors', function() {
 
             it('when scissors selected by user', function () {
                 spyOn(Math, 'random').and.returnValue(0.5); // paper
+                ctrl.playGame(scissorsClick);
 
-                expect(ctrl.playGame(scissorsClick)).toEqual('scissors');
+                expect(ctrl.winner).toEqual('player');
             });
 
             it('when paper selected by user', function () {
                 spyOn(Math, 'random').and.returnValue(0.9); // scissors
+                ctrl.playGame(paperClick);
 
-                expect(ctrl.playGame(paperClick)).toEqual('scissors');
+                expect(ctrl.winner).toEqual('computer');
             });
         });
     });

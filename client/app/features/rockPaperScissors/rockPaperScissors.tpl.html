@@ -17,4 +17,10 @@
         </button>
     </div>
 
+    <!-- should this logic be somewhere else? -->
+    <p ng-show="rockPaperScissors.winner === 'player'" class="winner">You win!</p>
+    <p ng-show="rockPaperScissors.winner === 'computer'" class="winner">Computer wins! </p>
+    <p ng-show="rockPaperScissors.winner === 'draw'" class="winner">It's a draw</p>
+
+
 </div>
