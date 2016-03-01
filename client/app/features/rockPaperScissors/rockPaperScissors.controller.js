@@ -1,7 +1,13 @@
 const rockPaperScissors = ['rock', 'paper', 'scissors'];
 const l = rockPaperScissors.length;
+let counter = {
+    computer: 0,
+    player: 0,
+    draw: 0
+}
 
-const didPlayerWin = function didPlayerWin (player, computer) {
+
+const whoWon = function whoWon (player, computer) {
     let winner;
 
     if (player === computer) {
@@ -39,6 +45,11 @@ const randomValue = function returnRandomValue () {
     return rockPaperScissors[randomPos];
 }
 
+const updateCounter = function updateCounter (winner) {
+    counter[winner] +=1;
+    return counter;
+}
+
 export default class rockPaperScissorsController {
     static get UID () {
         return "rockPaperScissorsController"
@@ -48,13 +59,16 @@ export default class rockPaperScissorsController {
         this.playerChoice = e.target.id;
         this.computerChoice = randomValue();
 
-        this.winner = didPlayerWin(this.playerChoice, this.computerChoice);
+        this.winner = whoWon(this.playerChoice, this.computerChoice);
+
+        this.scoreCard = updateCounter(this.winner);
     };
 
     /* @ngInject */
     constructor() {
         this.winner,
         this.computerChoice,
-        this.playerChoice
+        this.playerChoice,
+        this.scoreCard
     }
 }

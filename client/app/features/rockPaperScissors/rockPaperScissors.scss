@@ -1,7 +1,7 @@
 $color-selection: #CCCCFF;
 $color-scissors: #CF9036; // Fiskars brand colour
 $color-rock: #aaa;
-$color-paper: #eeece3; // sepia
+$color-paper: #AD8F6D; // sepia
 
 .page {
     display: flex;
@@ -26,6 +26,7 @@ $color-paper: #eeece3; // sepia
 .selector {
     height: 10rem;
     width: 10rem;
+    opacity: 0.5;
 
     @media screen and (min-width: 500px) {
         height: 20rem;
@@ -43,7 +44,9 @@ $color-paper: #eeece3; // sepia
     &:hover,
     &:active,
     &:focus {
-        border: 0.5rem solid $color-selection;
+        opacity: 1;
+        transform: scale(1.1);
+        transition: 0.3s ease-in-out;
     }
     & svg {
         pointer-events: none;
@@ -87,6 +90,7 @@ $color-paper: #eeece3; // sepia
     @media screen and (min-width: 480px) {
         font-size: 4rem;
     }
+    animation: scaleInOut 1s ease-in backwards;
 }
 
 .choices {
@@ -95,5 +99,24 @@ $color-paper: #eeece3; // sepia
     margin: 1rem auto;
     @media screen and (min-width: 480px) {
         font-size: 4rem;
+    }
+}
+
+.score {
+    font-size: 1.5rem;
+    margin: 1rem auto;
+}
+
+
+@keyframes scaleInOut {
+    0% {
+        opacity: 0;
+    }
+    20%, 75% {
+        opacity: 1;
+        transform: scale(1.5);
+    }
+    100% {
+        opacity: 1;
     }
 }

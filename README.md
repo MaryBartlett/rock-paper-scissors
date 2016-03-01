@@ -42,3 +42,9 @@ This definitely needs someone with an eye for design making it, it's far from pr
 I've not tested this cross browser - just Chrome on Linux.
 
 Ideally you'd have a reset file to reset all the browsers back to a common point. I've not got this so expect some variation between browsers.
+
+
+### Known issues
+
+
+If you and the computer both select the same item in a row, the animation doesn't work (as the DOM doesn't update).

@@ -30,9 +30,6 @@ describe('Controller: rockPaperScissors', function() {
 
     }));
 
-
-
-
     describe('.playGame', function () {
 
         describe('returns \'draw\' if both values are', function () {
@@ -116,6 +113,45 @@ describe('Controller: rockPaperScissors', function() {
 
                 expect(ctrl.winner).toEqual('computer');
             });
+        });
+
+        describe('score card gets updated', function () {
+            // not the best tests - ideally this would be testing only one change
+            // need to figure out how to properly create a new instance of the controller each time
+
+            it('gets updated when player is the winner', function () {
+                spyOn(Math, 'random').and.returnValue(0.5); // paper
+                ctrl.playGame(scissorsClick);
+
+                expect(ctrl.scoreCard).toEqual({
+                    computer: 3,
+                    player: 4,
+                    draw: 4
+                });
+            });
+
+            it('gets updated when computer is the winner', function () {
+                spyOn(Math, 'random').and.returnValue(0.0); // rock
+                ctrl.playGame(scissorsClick);
+
+                expect(ctrl.scoreCard).toEqual({
+                    computer: 4,
+                    player: 4,
+                    draw: 4
+                });
+            });
+
+            it('gets updated when it is a draw', function () {
+                spyOn(Math, 'random').and.returnValue(0.0); // rock
+                ctrl.playGame(rockClick);
+
+                expect(ctrl.scoreCard).toEqual({
+                    computer: 4,
+                    player: 4,
+                    draw: 5
+                });
+            });
+
         });
     });
 });
